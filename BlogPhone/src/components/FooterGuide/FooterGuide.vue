@@ -1,13 +1,7 @@
 <template>
     <div id="app-footer">
       <ul>
-        <router-link tag="li" to="/home">
-          <span>
-            <i class="iconfont icon-home"></i>
-          </span>
-          <span>首页</span>
-        </router-link>
-        <router-link tag="li" to="/news">
+      <router-link tag="li" to="/news">
           <span>
             <i class="iconfont icon-xiaoxi"></i>
           </span>
@@ -16,17 +10,23 @@
             {{unread}}
           </span>
         </router-link>
-        <router-link tag="li" to="/upload">
+        <router-link tag="li" to="/talk">
           <span>
+            <i class="iconfont icon-home"></i>
+          </span>
+          <span>通讯录</span>
+        </router-link>
+        <router-link tag="li" to="/upload">
+          <span style="position:relative;top:7px">
             <i class="iconfont icon-jia"></i>
           </span>
           <span></span>
         </router-link>
-        <router-link tag="li" to="/search">
+        <router-link tag="li" to="/home">
           <span>
-            <i class="iconfont icon-sousuo"></i>
+            <i class="iconfont icon-search icon-tabbar_faxian"></i>
           </span>
-          <span>搜索</span>
+          <span>发现</span>
         </router-link>
         <router-link tag="li" to="/profile">
           <span>
@@ -40,6 +40,7 @@
 
 <script>
   import { mapState } from 'vuex';
+  import '../../common/iconfont/iconfont.css'
     export default {
       computed:{
         ...mapState([

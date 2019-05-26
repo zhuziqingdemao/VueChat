@@ -2,7 +2,7 @@
   <div class="div-wrap">
     <div class="weui-cell search-wrap">
       <div class="weui-cell__bd">
-        <i @click="getSearchRes()" class="iconfont icon-sousuo"></i>
+        <i @click="getSearchRes()" class="iconfont icon-search"></i>
         <i v-show="isShow" @click="clearText" class="iconfont icon-chucuo"></i>
         <span class="back" @click="$router.go(-1)">取消</span>
         <form action='' onsubmit="return false;">
@@ -190,7 +190,7 @@
     .search-wrap {
       box-shadow: 1px 2px 2px gainsboro;
       background-color: rgba(93, 93, 93, 0.05);
-      .icon-sousuo {
+      .icon-search {
         position: absolute;
         left: 12px;
       }

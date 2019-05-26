@@ -36,7 +36,8 @@
   import {mapState, mapMutations} from 'vuex';
   import myheader from 'components/myheader/my-header';
   import scroll from '../../components/scroll/scroll';
-  import unlogin from '../../components/unlogin/unlogin'
+  import unlogin from '../../components/unlogin/unlogin';
+  import UrlSearch   from '../../common/js/url.js';
   import {Toast} from 'mint-ui'
 
   export default {
@@ -56,7 +57,8 @@
         content: '',
         sendInfo: "发送",
         dataList: [],
-        tUserInfo:''
+        tUserInfo:'',
+        img:require('../../common/image/logo.png')
       }
     },
     computed: {
@@ -109,6 +111,37 @@
           return;
         }
         if (this.content == '') {
+          return;
+        }
+        let url = new UrlSearch();
+        if(url.chatwith == 'robot' && url.chatwithid == '1234'){
+          this.tUserInfo = '1234'
+          this.dataList.push({
+              user_id: {//这个有点乱了，这个是自己的信息
+                avater: this.userInfo.avater
+              },
+              chatWith: {
+                _id: this.chatWithId
+              },
+              addTime: Date.now(),
+              content: this.content
+            });
+          var self = this;
+          this.axios.get('http://www.tuling123.com/openapi/api?key=9857cf36b0bc4a48b8ba3f976e43a4cf&userid=1234&info='+this.content).then((result) =>{
+            this.sendInfo = '发送';
+            //把自己发送的内容更新到dataList中
+            self.dataList.push({
+              user_id: {//这个有点乱了，这个是自己的信息
+                avater: self.img
+              },
+              chatWith: {
+                _id: this.userInfo._id
+              },
+              addTime: Date.now(),
+              content: result.data.text
+            });
+          })
+          this.content = '';
           return;
         }
         this.sendInfo = '发送中..';
@@ -197,6 +230,7 @@
         font-size: 14px;
         line-height: 1.5rem;
         height: 1.5rem;
+        padding:1.5rem;
         span {
           background-color: rgba(172, 172, 177, 0.29);
           color: white;

@@ -7,11 +7,11 @@ let multer = require('multer');
 let OSS = require('ali-oss');
 //阿里云oss配置自己去官网瞧
 let client = new OSS({
-    region: 'oss-cn-shanghai',
-    accessKeyId: '****',
-    accessKeySecret: '******'
+    region: 'oss-cn-qingdao',
+    accessKeyId: 'LTAI7uRU6UZlfZwh',
+    accessKeySecret: 'oXD79VaW4dLVo6HVgrvHL4ceYWcuZF'
 });
-client.useBucket('******');
+client.useBucket('h5-photos');
 async function put (fileName,filePath,cb) {
     try {
         let result = await client.put(fileName, filePath);
@@ -25,7 +25,6 @@ async function put (fileName,filePath,cb) {
 
 let filePath;
 let fileName;
-
 let Storage = multer.diskStorage({
     destination: function (req, file, cb) {//计算图片存放地址
         cb(null, './public/img');

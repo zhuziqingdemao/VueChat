@@ -1,9 +1,11 @@
 <template>
   <div class="div-wrap search">
-    <myheader :title="'搜索'"> </myheader>
+    <myheader :title="'搜索'"> 
+      <i class="iconfont icon-fanhui1 left" slot="left" @click="goback"></i>
+    </myheader>
     <div class="weui-cell search-wrap">
       <div class="weui-cell__bd">
-        <i class="iconfont icon-sousuo"></i>
+        <i class="iconfont icon-search"></i>
         <input @click="$router.push('/searchbar')" ref="input" class="weui-input" type="text" placeholder="搜索"/>
       </div>
     </div>
@@ -41,6 +43,9 @@
           this.searchList = JSON.parse(window.localStorage.search);
         }
       },
+      goback() {
+        this.$router.go(-1);
+      },
       _deleteOne(index){
         deleteOne(index);
         this.getList();
@@ -58,7 +63,7 @@
   .search-wrap{
     background-color: rgba(93, 93, 93, 0.05);
     box-shadow: 1px 2px 2px gainsboro;
-    .icon-sousuo{
+    .icon-search{
       position: absolute;
       left: 8px;
     }

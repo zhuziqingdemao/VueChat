@@ -187,5 +187,22 @@ router.get('/chatlist', (req, res) => {
         })
     })
 });
-
+//接入图灵机器人接口
+router.get('/tulingapi', (req, res) => {
+    let response=res
+    let info = req.query.content
+    let userid = req.query.user_id;
+    let key = '9857cf36b0bc4a48b8ba3f976e43a4cf'
+    superagent.post('http://www.tuling123.com/openapi/api')
+    .send({info, userid, key})
+    .end((err,res) => {
+      if(err){
+        console.log(err)
+      }
+      response.json({
+        data: res.text
+      })
+    })
+})
+  
 module.exports = router;

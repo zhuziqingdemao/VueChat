@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home.vue';
 import News from '../pages/News/News.vue';
 import Upload from '../pages/upload/upload.vue';
 import Search from '../pages/Search/Search.vue';
+import List from '../pages/Talking/talk';
 import SearchBar from '../pages/Search/SearchBar.vue';
 import Profile from '../pages/Profile/Profile.vue';
 import Login from '../pages/Login/Login.vue';
@@ -16,7 +17,9 @@ import Comment from '../components/comment/comment';
 import Comlist from '../components/comlist/comlist';
 import Chat from '../components/chat/chat';
 import Pindex from '../components/personalIndex/pindex';
-
+import dialog from '../components/dialog/dialogDetail';
+import dialogList from '../components/dialogList/dialogList';
+import userInfo  from '../components/userInfo/userinfo';
 Vue.use(VueRouter);
 
 
@@ -30,6 +33,11 @@ let router = new VueRouter({
     {
       path: '/search',
       component: Search,
+      meta: {keepAlive: false, showFooter: true, index: 3}
+    },
+    {
+      path: '/talk',
+      component: List,
       meta: {keepAlive: false, showFooter: true, index: 3}
     },
     {
@@ -105,6 +113,20 @@ let router = new VueRouter({
     {
       path: '/',
       redirect: '/profile'
+    },
+    {
+      path: '/',
+      name: 'dialogList',
+      component: dialogList
+    },
+    {
+    	path:'/djzy:id',
+    	name:'dialogA',
+    	component:dialog
+    },
+    {
+      path:'/userInfo',
+      component:userInfo
     }
   ]
 });

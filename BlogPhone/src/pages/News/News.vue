@@ -114,8 +114,8 @@
         overflow: hidden;
         .tubiao {
           margin: 0 auto;
-          width: 55px;
-          height: 55px;
+          width: 50px;
+          height: 50px;
           border-radius: 50%;
           i {
             color: white;
@@ -123,8 +123,8 @@
         }
         .avater {
           margin: 0 auto;
-          width: 55px;
-          height: 55px;
+          width: 40px;
+          height: 40px;
           background: no-repeat 50%;
           background-size: cover;
           border-radius: 50%;

@@ -107,5 +107,13 @@ router.get('/userInfo',(req,res)=>{
        }
    })
 });
-
+router.post('/getFridens',(req,res)=>{
+    User.find({isfrind:true}).sort({_id: -1}).then((data) => {
+        res.json({
+            code:0,
+            data
+        });
+        return 1;
+    })
+});
 module.exports = router;

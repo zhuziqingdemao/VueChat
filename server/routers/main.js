@@ -111,5 +111,4 @@ router.get('/user/logout',(req,res,)=>{
     req.session.userInfo = null;
     res.json(responseData);
 });
-
 module.exports = router;

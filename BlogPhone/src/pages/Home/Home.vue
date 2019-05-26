@@ -1,7 +1,7 @@
 <template>
   <div id="msite">
     <myheader :title="'首页'">
-      <i @click="$router.push('/searchbar')" class="iconfont icon-sousuo left" slot="left"></i>
+      <i @click="$router.push('/search')" class="iconfont icon-search left" slot="left"></i>
       <router-link v-if="userInfo.username" to="/profile" tag="span" class="right" slot="right">我的</router-link>
       <router-link v-else to="/login" tag="span" class="right" slot="right">登录</router-link>
     </myheader>
@@ -13,6 +13,14 @@
         <ul>
           <li class="pyq" :key="Math.random()" v-for="(list,index) in PyqList">
             <div class="del" @click="del(list._id)" v-if="list.writer.username === userInfo.username">&times;</div>
+            <div class="add" @click="add(list.writer.username)" v-else="">
+              <div v-if='(!list.writer.isfrind)' class="addSee">
+                  <span>+关注</span>
+              </div>
+              <div v-else="" class="hasSee">
+                <span>已关注</span>
+              </div>
+            </div>
             <div class="avater" @click="goToPindex(list.writer.username,list.writer._id)">
               <img :src="list.writer.avater"/>
             </div>
@@ -138,6 +146,17 @@
             Toast(rs.data.msg)
           })
         }).catch(err => {
+        })
+      },
+      add(username,isfriend){
+        debugger
+        this.axios.post('/follower/addfoll',{
+          username:this.userInfo.username,
+          followername:username,
+          status:1,
+          createTime:Date.now()
+        }).then((rs)=>{
+            this.getPyqLists();
         })
       },
       comment(id, writer) {
@@ -303,6 +322,26 @@
             color: black;
             opacity: 0.8;
             font-size: 20px;
+          }
+          .add{
+              position: absolute;
+              right: 20px;
+              border: 1px solid;
+              border-radius: 5px;
+              font-size: 14px;
+              text-align: center;
+              width: 50px;
+              color: #fff;
+              cursor: pointer;
+              .addSee{
+                border-radius: 5px;
+                background: #fa953d;
+              }
+              .hasSee{
+                border-radius: 5px;
+                border: 1px solid #757575;
+                color: #757575;
+              }
           }
           min-height: 50px;
           background-color: white;

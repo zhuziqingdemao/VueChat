@@ -30,7 +30,7 @@ app.use((req, res, next) => {
     if (req.session.userInfo) {
         try {
             req.userInfo = req.session.userInfo;
-            User.findOne({
+            User.findOne({ 
                 _id:req.userInfo._id
             }).then((userInfo) => {
                 req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
@@ -52,6 +52,7 @@ app.use('/profile', require('./routers/profile'));
 app.use('/pyq', require('./routers/pyq'));
 app.use('/search',require('./routers/search'));
 app.use('/upload', require('./routers/upload'));
+app.use('/follower',require('./routers/follower'));
 app.use('/', require('./routers/main'));
 
 mongoose.connect('mongodb://127.0.0.1:27017/social', {useNewUrlParser:true},(err) => {
