@@ -12,7 +12,7 @@ router.post('/addfoll',(req,res) =>{
     Follower.findOne({
         username:followername,
         followername:username
-    }).then((data)=>{
+    }).then((data)=>{ 
         if(data){
             //假设有联系，
             if(data.status&& status){
