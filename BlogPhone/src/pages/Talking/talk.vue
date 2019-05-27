@@ -63,8 +63,17 @@
         'clear_chatUnread'
       ]),
        getFridens(){
-            this.axios.post('/profile/getFridens').then(({data}) => {
-                this.talkList = data.data;
+           this.axios.post('/follower/getfolllist',{
+                username:this.userInfo.username
+            }).then((res) => {
+                let data = [];
+                data.push(res.data)
+                data.forEach((item,index)=>{
+                    let username = item.username
+                    this.axios.get(`/profile/userInfo?name=${item.followername}`).then((da) => {
+                    this.talkList.push(da.data)
+                })
+                })
             })
         },
         enterChat(chatwith, chatwithid) {
