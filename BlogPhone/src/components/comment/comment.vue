@@ -79,7 +79,4 @@
 </script>
 
 <style lang="less" scoped>
-  .comment {
-
-  }
 </style>
