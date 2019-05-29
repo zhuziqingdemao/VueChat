@@ -12,10 +12,6 @@ module.exports = new mongoose.Schema({
         type:String,
         default:'http://localhost:3001/public/img/avater.jpg'
     },
-    isfrind:{
-        type:Boolean,
-        default:false
-    },
     signature:{
         type:String,
         default:'这人很懒，这是系统帮他写的'

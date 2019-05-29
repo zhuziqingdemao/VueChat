@@ -12,6 +12,10 @@ module.exports = new mongoose.Schema({
         type:Number,
         default:0
     },
+    status:{
+        type:Number,
+        default:0
+    },
     content:String,
     writer:{
         type:mongoose.Schema.Types.ObjectId,

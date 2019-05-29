@@ -14,7 +14,7 @@
           <li class="pyq" :key="Math.random()" v-for="(list,index) in PyqList">
             <div class="del" @click="del(list._id)" v-if="list.writer.username === userInfo.username">&times;</div>
             <div class="add" @click="add(list.writer.username)" v-else="">
-              <div v-if='(!list.writer.isfrind)' class="addSee">
+              <div v-if='(!list.status)' class="addSee">
                   <span>+关注</span>
               </div>
               <div v-else="" class="hasSee">
@@ -152,13 +152,14 @@
         }).catch(err => {
         })
       },
-      add(username,isfriend){
+      add(username){
         this.axios.post('/follower/addfoll',{
           username:this.userInfo.username,
           followername:username,
           status:1,
           createTime:Date.now()
         }).then((rs)=>{
+            Toast(rs.data.msg)
             this.getPyqLists();
         })
       },
@@ -236,7 +237,16 @@
               this.set_userInfo(data.userInfo);
               this.getMessage();
             }*/
+            var self = this;
             this.PyqList = data.data;
+            this.PyqList.forEach((item)=>{
+              this.axios.post('/follower/iffriend',{
+                username:self.userInfo.username,
+                followername:item.writer.username,
+              }).then((res)=>{
+                item.status  = res.data.status;
+              });
+            })
             if (refresh) {
               this.showupload = false
             }
