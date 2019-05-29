@@ -104,7 +104,8 @@
     background-color: #fdfdfd;
     .news-box {
       display: flex;
-      margin: 5px 0;
+      margin: 5px;
+      border-bottom: 1px solid gainsboro ;
       .left {
         float: left;
         height: 55px;
@@ -139,7 +140,6 @@
         font-size: 18px;
         font-weight: bold;
         line-height: 55px;
-        border-bottom: gainsboro 1px solid;
         width: 80%;
         display: flex;
         flex-direction: column;

@@ -22,11 +22,15 @@
               </div>
             </div>
             <div class="avater" @click="goToPindex(list.writer.username,list.writer._id)">
-              <img :src="list.writer.avater"/>
+              <div class="imgBox">
+                <img :src="list.writer.avater"/>
+              </div>
+              <div class="userMsg">
+                <div class="username" @click="goToPindex(list.writer.username,list.writer._id)">{{list.writer.username}}</div>
+                <div class="signature">{{list.writer.signature}}</div>
+              </div>
             </div>
             <div class="content">
-              <div class="username" @click="goToPindex(list.writer.username,list.writer._id)">{{list.writer.username}}
-              </div>
               <div class="pyq-content">{{list.content}}</div>
               <div style="width: 100%" v-if="list.pimg.length === 1" class="one-box">
                 <div class="one" @click="showimg(list.pimg,0)"
@@ -38,7 +42,7 @@
                      v-for="(item,index) in list.pimg" :style="'backgroundImage:url(' + item +' )'"></div>
               </div>
               <div class="footer">
-                <div class="add-time">{{list.addTime|fomatTime}}</div>
+                <div class="add-time">发布于{{list.addTime|fomatTime}}</div>
                 <div @click="comment(list._id,list.writer.username)" class="comments">
                   评论
                 </div>
@@ -149,7 +153,6 @@
         })
       },
       add(username,isfriend){
-        debugger
         this.axios.post('/follower/addfoll',{
           username:this.userInfo.username,
           followername:username,
@@ -347,33 +350,41 @@
           background-color: white;
           margin-bottom: 1px;
           padding: 10px;
-          display: flex;
           position: relative;
           .avater {
-            background-color: black;
-            min-width: 50px;
+            width: 100%;
             height: 50px;
-            width: 50px;
             margin-right: 10px;
-            overflow: hidden;
-            img {
-              width: 100%;
-              display: block;
-              position: relative;
-              top: 50%;
-              transform: translateY(-50%);
+            display:flex;
+            margin-bottom: 10px;
+            .imgBox{
+              width: 50px;
+              height: 50px;
+              background-color: black;
+              margin-right: 10px;
+              border-radius: 50%;
+              overflow: hidden;
+              img {
+                width: 100%;
+                display: block;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+              }
+            }
+            .userMsg{
+              .username{
+                font-size: 18px;
+                line-height: 30px;
+              }
+              .signature{
+                font-size: 14px;
+                line-height: 20px;
+              }
             }
           }
           .content {
-            display: flex;
-            flex-direction: column;
-            width: 85%;
-            max-width: 85%;
-            .username {
-              color: #026CFF;
-              line-height: 30px;
-              max-width: 75px;
-            }
+            width: 100%;
             .footer {
               display: flex;
               justify-content: space-between;

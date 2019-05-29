@@ -7,7 +7,7 @@
     <div class="weui-cells weui-cells_form" v-if="userInfo._id">
       <div class="weui-cell">
         <div class="weui-cell__bd">
-          <textarea class="weui-textarea" v-model="content" :placeholder="to?'回复'+to:'评论...'" rows="3"></textarea>
+          <textarea class="weui-textarea" v-model="content" :placeholder="to?'回复'+to:'说点什么吧...'" rows="3"></textarea>
         </div>
       </div>
     </div>

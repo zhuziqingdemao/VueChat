@@ -96,6 +96,7 @@
       width: 50px;
       margin-right: 10px;
       overflow: hidden;
+      border-radius: 50%;
       img {
         width: 100%;
         display: block;

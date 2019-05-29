@@ -8,7 +8,7 @@
         <li v-for="(item,index) in com" :key="index" class="list">
           <div class="reply" @click="reply(item.pyqid,item.from,item.writer)">回复</div>
           <div class="comheader">
-            <div class="avater">
+            <div class="imgBox">
               <img :src="item.headerimg"/>
             </div>
             <div class="header-right">
@@ -20,7 +20,7 @@
             {{item.content}}
           </div>
           <div class="comfooter">
-            <div class="avater">
+            <div class="imgBox">
               <img :src="item.footerimg"/>
             </div>
             <div class="footer-right">
@@ -97,11 +97,17 @@
         }
         .comheader {
           display: flex;
-          .avater {
+          .imgBox {
             width: 40px;
             height: 40px;
             min-width: 40px;
             border-radius: 50%;
+            overflow: hidden;
+            margin-right:10px;
+            img{
+              width: 40px;
+              height: 40px;
+            }
           }
           .header-right {
             display: flex;
@@ -109,6 +115,7 @@
             .username {
               height: 25px;
               line-height: 25px;
+              font-size: 18px;
             }
             .time {
               height: 15px;
@@ -122,11 +129,26 @@
           width: 100%;
           background-color: #f8f8f8;
           display: flex;
+          .imgBox{
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 10px;
+            img{
+              width: 40px;
+              height: 40px;
+            }
+          }
           .footer-right {
             display: flex;
             flex-direction: column;
             overflow: hidden;
             text-overflow: ellipsis;
+            .username{
+              font-size: 18px;
+              line-height: 25px;
+            }
             .pyq {
               font-size: 14px;
               line-height: 15px;

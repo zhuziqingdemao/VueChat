@@ -110,18 +110,10 @@
     opacity: 0;
   }
   .avater {
-    background-color: black;
     height: 50px;
-    width: 50px;
+    width: 100%;
     margin-right: 10px;
     overflow: hidden;
-    img {
-      width: 100%;
-      display: block;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
   }
 
   .scroll-wrap {

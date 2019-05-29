@@ -127,6 +127,7 @@
                 min-width: 40px;
                 height: 40px;
                 width: 40px;
+                border-radius: 50%;
                 margin-right: 10px;
                 overflow: hidden;
                 display:inline-block;
